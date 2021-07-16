@@ -17,10 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/refresh", (req, res) => {
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWebApi({
-    redirectUri: process.env.REDIRECT_URI,
-    clientId: process.env.CLIENT_ID,
+    redirectUri: process.env.REACT_APP_REDIRECT_URI,
+    clientId: process.env.REACT_APP_CLIENT_ID,
     // clientSecret should later be moved to env.file due to security reasons
-    clientSecret: process.env.CLIENT_SECRET,
+    clientSecret: process.env.REACT_APP_CLIENT_SECRET,
     // https://github.com/thelinmichael/spotify-web-api-node,
     refreshToken,
   });
@@ -45,10 +45,10 @@ app.post("/refresh", (req, res) => {
 app.post("/login", (req, res) => {
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
-    redirectUri: process.env.REDIRECT_URI,
-    clientId: process.env.CLIENT_ID,
+    redirectUri: process.env.REACT_APP_REDIRECT_URI,
+    clientId: process.env.REACT_APP_CLIENT_ID,
     // clientSecret should later be moved to env.file due to security reasons
-    clientSecret: process.env.CLIENT_SECRET,
+    clientSecret: process.env.REACT_APP_CLIENT_SECRET,
   });
 
   spotifyApi
