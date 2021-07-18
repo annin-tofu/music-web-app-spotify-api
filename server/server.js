@@ -17,10 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/refresh", (req, res) => {
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWebApi({
-    redirectUri: process.env.REACT_APP_REDIRECT_URI,
-    clientId: process.env.REACT_APP_CLIENT_ID,
+    redirectUri: process.env.REDIRECT_URI,
+    clientId: process.env.CLIENT_ID,
     // clientSecret should later be moved to env.file due to security reasons
-    clientSecret: process.env.REACT_APP_CLIENT_SECRET,
+    clientSecret: process.env.CLIENT_SECRET,
     // https://github.com/thelinmichael/spotify-web-api-node,
     refreshToken,
   });
@@ -75,4 +75,10 @@ app.get("/lyrics", async (req, res) => {
   res.json({ lyrics });
 });
 
-app.listen(3000);
+// app.listen(3001);
+// https://fullstackopen.com/en/part3/deploying_app_to_internet
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
